@@ -1,9 +1,56 @@
-<!DOCTYPE HTML>
-<html>
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
- <title>我的作品</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="keywords" content="抽签"/>
+  <meta name="description" content="抽签！"/>
+  <title>抽签</title>
+  
+  <style> 
+.abc{ color:#ff0000} 
+</style>
+<SCRIPT LANGUAGE="JavaScript">
+// var names = [
+// "名称一",
+// "名称二",
+// "名称三",
+// ];
+
+
+var names=new Array(249);
+for(var i=0;i<=248;i++){
+	names[i]=i+1;
+}
+var time;
+function begin(){
+document.getElementById("btnBegin").disabled = true;
+chouqian();
+}
+function chouqian(){
+var index = Math.floor(Math.random()*1000 % names.length);
+var name = names[index];
+document.getElementById("result").innerHTML = name;
+//$("#result").text(name);
+time = window.setTimeout(chouqian,2);
+}
+
+
+function end(){
+window.clearTimeout(time);
+document.getElementById("btnBegin").disabled = false;
+}
+ </SCRIPT>
+
 </head>
+
 <body>
-	this is 我的作品
-<body>
+ <div style="text-align:center;margin-top:150px">
+<h1><font color="black"><font size="120px">幸运大转盘</font></h1>
+<h3 class="abc" id="result" style="font-size:100px;"></h3>
+<INPUT TYPE="button" VALUE="开始" id="btnBegin" ONCLICK="begin();" style="width:100px;height:50px;background-color: green;font-size: 25px;"> 
+<INPUT TYPE="button" VALUE="结束" id="btnEnd" ONCLICK="end();" style="width:100px;height:50px;background-color: gray;font-size: 25px;">
+</div>
+
+</body>
 </html>
